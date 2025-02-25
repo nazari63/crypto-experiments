@@ -20,17 +20,9 @@ jobs:
 
     - name: Create virtual environment
       run: |
-        python -m venv venv
-        source venv/bin/activate
+        python -m venv venv  # ایجاد محیط مجازی
+        source venv/bin/activate  # فعال کردن محیط مجازی
 
     - name: Install dependencies
       run: |
-        pip install --upgrade pip
-        pip install ecdsa
-        pip show ecdsa  # نمایش اطلاعات مربوط به پکیج نصب شده
-
-    - name: Run Crypto Test
-      run: |
-        source venv/bin/activate  # فعال‌سازی محیط مجازی
-        python -v generate_keys.py  # فعال کردن verbose برای بیشتر شدن خروجی خطا
-        python -v digital_signature.py  # فعال کردن verbose برای بیشتر شدن خروجی خطا
+        pip install
