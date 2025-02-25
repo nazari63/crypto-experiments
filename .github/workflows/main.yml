@@ -25,4 +25,11 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install
+        pip install --upgrade pip  # به‌روزرسانی pip
+        pip install ecdsa  # نصب پکیج ecdsa
+
+    - name: Run Crypto Test
+      run: |
+        source venv/bin/activate  # فعال کردن محیط مجازی
+        python -v generate_keys.py  # اجرای اسکریپت generate_keys.py با حالت verbose
+        python -v digital_signature.py  # اجرای اسکریپت digital_signature.py با حالت verbose
