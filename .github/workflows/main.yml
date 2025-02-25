@@ -1,7 +1,6 @@
-
 name: Crypto Repo Test
 
-on: 
+on:
   push:
     branches:
       - main
@@ -22,13 +21,12 @@ jobs:
     - name: Create virtual environment
       run: |
         python -m venv venv  # ایجاد محیط مجازی
-        source venv/bin/activate  # فعال کردن محیط مجازی
 
-    - name: Install dependencies
+    - name: Activate and Install dependencies
       run: |
+        source venv/bin/activate  # فعال کردن محیط مجازی
         pip install --upgrade pip  # به‌روزرسانی pip
-        pip install ecdsa  # نصب پکیج‌های لازم
-        pip install --no-cache-dir  # نصب بدون کش (برای جلوگیری از مشکلات کش)
+        pip install --no-cache-dir ecdsa  # نصب پکیج‌های لازم
 
     - name: Run Crypto Test
       run: |
