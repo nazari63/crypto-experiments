@@ -29,7 +29,17 @@ jobs:
         pip install --no-cache-dir ecdsa  # نصب پکیج‌های لازم
 
     - name: Run Crypto Test
+      env:
+        PYTHONUNBUFFERED: 1
       run: |
         source venv/bin/activate  # فعال کردن محیط مجازی
         python -v generate_keys.py  # اجرای اسکریپت generate_keys.py با حالت verbose
+        if [ $? -ne 0 ]; then
+          echo "Error running generate_keys.py"
+          exit 1
+        fi
         python -v digital_signature.py  # اجرای اسکریپت digital_signature.py با حالت verbose
+        if [ $? -ne 0 ]; then
+          echo "Error running digital_signature.py"
+          exit 1
+        fi
