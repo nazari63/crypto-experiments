@@ -21,8 +21,10 @@ jobs:
     - name: Create virtual environment
       run: |
         python -m venv venv  # ایجاد محیط مجازی
+        source venv/bin/activate  # فعال کردن محیط مجازی
+        python --version  # نمایش نسخه پایتون برای بررسی
 
-    - name: Activate and Install dependencies
+    - name: Install dependencies
       run: |
         source venv/bin/activate  # فعال کردن محیط مجازی
         pip install --upgrade pip  # به‌روزرسانی pip
@@ -33,12 +35,15 @@ jobs:
         PYTHONUNBUFFERED: 1
       run: |
         source venv/bin/activate  # فعال کردن محیط مجازی
-        python -v generate_keys.py  # اجرای اسکریپت generate_keys.py با حالت verbose
+        echo "Running generate_keys.py..."
+        python generate_keys.py  # اجرای اسکریپت generate_keys.py
         if [ $? -ne 0 ]; then
           echo "Error running generate_keys.py"
           exit 1
         fi
-        python -v digital_signature.py  # اجرای اسکریپت digital_signature.py با حالت verbose
+        
+        echo "Running digital_signature.py..."
+        python digital_signature.py  # اجرای اسکریپت digital_signature.py
         if [ $? -ne 0 ]; then
           echo "Error running digital_signature.py"
           exit 1
