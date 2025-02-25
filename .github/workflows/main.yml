@@ -1,3 +1,4 @@
+
 name: Crypto Repo Test
 
 on: 
@@ -26,7 +27,8 @@ jobs:
     - name: Install dependencies
       run: |
         pip install --upgrade pip  # به‌روزرسانی pip
-        pip install ecdsa  # نصب پکیج ecdsa
+        pip install ecdsa  # نصب پکیج‌های لازم
+        pip install --no-cache-dir  # نصب بدون کش (برای جلوگیری از مشکلات کش)
 
     - name: Run Crypto Test
       run: |
